@@ -1,2 +1,3 @@
 srpm:
-	mock --enable-network --buildsrpm --spec $(spec_path) --resultdir=$(outdir)
+	dnf install -y mock
+	mock --enable-network --buildsrpm --spec $(spec) --resultdir=$(outdir)
