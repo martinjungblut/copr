@@ -134,16 +134,18 @@ cd src
             --sharedstatedir=%{_sharedstatedir} \
             --mandir=%{_mandir} \
             --infodir=%{_infodir} \
-%ifarch %{arm} s390x
-            --disable-generations \
-%endif
             --enable-pthread \
             --enable-shared \
             --enable-libffi \
-            --enable-csdefault \
-            --disable-strip
+            --disable-strip \
+%ifarch x86_64 aarch64
+            --enable-csdefault
+%else
+            --disable-generations \
+            --enable-bcdefault
+%endif
 
-%ifarch x86_64 aarch64 ppc64le
+%ifarch x86_64 aarch64
 make cs -j%{_smp_build_ncpus} CPUS=%{_smp_build_ncpus}
 %else
 make bc -j%{_smp_build_ncpus} CPUS=%{_smp_build_ncpus}
@@ -153,7 +155,7 @@ make bc -j%{_smp_build_ncpus} CPUS=%{_smp_build_ncpus}
 cd src
 
 # Install the program.
-%ifarch x86_64 aarch64 ppc64le
+%ifarch x86_64 aarch64
 make install-cs DESTDIR=${RPM_BUILD_ROOT}
 %else
 make install-bc DESTDIR=${RPM_BUILD_ROOT}
