@@ -1,4 +1,4 @@
 srpm:
-	dnf install -y mock rpmdevtools
+	dnf install -y rpmdevtools rpm-build
 	spectool -g -R $(spec)
-	mock --buildsrpm --spec $(spec) --resultdir=$(outdir)
+	rpmbuild -bs $(spec)
