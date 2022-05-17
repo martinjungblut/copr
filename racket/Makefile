@@ -1,5 +1,5 @@
 srpm:
-	mock --enable-network --buildsrpm --spec racket.spec --resultdir=$(outdir)
+	mock --enable-network --buildsrpm --spec racket.spec
 chroot-init:
 	mock -r fedora-35-x86_64 --init
 chroot-clean:
