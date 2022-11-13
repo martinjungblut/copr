@@ -1,3 +1,7 @@
+# disable check-buildroot
+%define __arch_install_post %{nil}
+%define __os_install_post %{nil}
+
 Name:           racket
 Version:        8.7
 Release:        1%{?dist}
@@ -34,7 +38,7 @@ BuildRequires: libjpeg-turbo
 BuildRequires: glib2
 
 # To validate desktop file
-BuildRequires:  desktop-file-utils
+BuildRequires: desktop-file-utils
 
 BuildRequires: git
 
