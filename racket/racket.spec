@@ -182,6 +182,11 @@ for i in $(find ${RPM_BUILD_ROOT}/%{_datadir}/doc/racket -type f -name "*.html")
   sed -i "s#${RPM_BUILD_ROOT}##g" $i
 done
 
+# Fix paths in bytecode
+for i in $(find ${RPM_BUILD_ROOT}/%{_libdir} -type f -name "*.zo"); do
+  sed -i "s#${RPM_BUILD_ROOT}##g" $i
+done
+
 # Remove the executable bit on legacy template file
 chmod -x ${RPM_BUILD_ROOT}%{_libdir}/racket/starter-sh
 
