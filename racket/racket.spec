@@ -1,5 +1,5 @@
 Name:           racket
-Version:        8.5
+Version:        8.7
 Release:        1%{?dist}
 Summary:        General purpose programming language
 
@@ -257,6 +257,9 @@ chmod -x ${RPM_BUILD_ROOT}%{_libdir}/racket/starter-sh
 %{_datadir}/doc/racket
 
 %changelog
+* Sun Nov 13 2022 Martin Jungblut Schreiner <martinjungblut@gmail.com> - 8.7-1
+- Update to 8.7.
+
 * Fri May 13 2022 Martin Jungblut Schreiner <martinjungblut@gmail.com> - 8.5-1
 - Update to 8.5.
 
