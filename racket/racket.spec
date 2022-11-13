@@ -138,28 +138,18 @@ cd src
             --enable-shared \
             --enable-libffi \
             --disable-strip \
-%ifarch x86_64 aarch64
-            --enable-csdefault
-%else
             --disable-generations \
             --enable-bcdefault
-%endif
 
-%ifarch x86_64 aarch64
-make cs -j%{_smp_build_ncpus} CPUS=%{_smp_build_ncpus}
-%else
+sed -i s+%{_libdir}+/%{_lib}+g bc/Makefile
+
 make bc -j%{_smp_build_ncpus} CPUS=%{_smp_build_ncpus}
-%endif
 
 %install
 cd src
 
 # Install the program.
-%ifarch x86_64 aarch64
-make install-cs DESTDIR=${RPM_BUILD_ROOT}
-%else
 make install-bc DESTDIR=${RPM_BUILD_ROOT}
-%endif
 
 # Delete static libraries. Apparently --disable-libs does not stop it.
 rm -vf ${RPM_BUILD_ROOT}%{_libdir}/libracketcs.a
