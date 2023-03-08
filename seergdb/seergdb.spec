@@ -1,6 +1,6 @@
 Name:           seergdb
 Version:        1.15
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A GUI front-end for GNU gdb.
 
 License:        GPLv3+
