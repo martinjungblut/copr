@@ -1,6 +1,6 @@
 Name:           seergdb
 Version:        1.15
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A GUI front-end for GNU gdb.
 
 License:        GPLv3+
@@ -33,22 +33,22 @@ mkdir -p %{buildroot}/%{_bindir}
 install -m 0755 src/build/%{name} %{buildroot}/%{_bindir}/%{name}
 
 mkdir -p %{buildroot}%{_datadir}/applications
-install -m 0755 src/resources/%{name}.desktop %{buildroot}/%{_datadir}/applications/%{name}.desktop
+install -m 0644 src/resources/%{name}.desktop %{buildroot}/%{_datadir}/applications/%{name}.desktop
 
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/32x32/apps
-install -m 0755 src/resources/%{name}_32x32.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/%{name}.png
+install -m 0644 src/resources/%{name}_32x32.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/%{name}.png
 
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/64x64/apps
-install -m 0755 src/resources/%{name}_64x64.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/%{name}.png
+install -m 0644 src/resources/%{name}_64x64.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/%{name}.png
 
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/128x128/apps
-install -m 0755 src/resources/%{name}_128x128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/%{name}.png
+install -m 0644 src/resources/%{name}_128x128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/%{name}.png
 
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
-install -m 0755 src/resources/%{name}_256x256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
+install -m 0644 src/resources/%{name}_256x256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
 
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/512x512/apps
-install -m 0755 src/resources/%{name}_512x512.png %{buildroot}%{_datadir}/icons/hicolor/512x512/apps/%{name}.png
+install -m 0644 src/resources/%{name}_512x512.png %{buildroot}%{_datadir}/icons/hicolor/512x512/apps/%{name}.png
 
 %files
 %{_bindir}/%{name}
@@ -60,6 +60,9 @@ install -m 0755 src/resources/%{name}_512x512.png %{buildroot}%{_datadir}/icons/
 %{_datadir}/icons/hicolor/512x512/apps/%{name}.png
 
 %changelog
+* Wed Mar 8 2023 Martin Jungblut Schreiner <martinjungblut@gmail.com> - 1.15-3
+- Fix permissions for icons and .desktop file.
+
 * Wed Mar 8 2023 Martin Jungblut Schreiner <martinjungblut@gmail.com> - 1.15-2
 - Add .desktop entry and icons.
 
